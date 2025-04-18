@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>USA On The Road</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+
+  <!-- CSS Esterno -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+ 
+  <!-- header con prezzo new -->  
+  <section class="hero-header">
+    <div class="hero-content">
+      <h1>USA On The Road</h1>
+      <p>15 giorni tra strade leggendarie e paesaggi mozzafiato</p>
+    </div>
+  
+    <div class="price-box-container">
+      <div class="price-section">
+        <div class="price-box">
+          <p>dal 1° al 15 maggio 2025</p>
+          <p class="prezzo">€ 1050 <span>/persona</span></p>
+          <p class="incluso">Solo per 8 persone</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Aggiunta della parte di testo introduttivo -->
+  <section class="sotto-header-box">
+    <div class="intro-overlay">
+      <h2>Pronti per l'avventura?</h2>
+      <p>Si parte da Los Angeles per perdersi nelle meraviglie dei Parchi Nazionali e nei paesaggi sconfinati degli Stati Uniti. Un viaggio che ti porterà a vivere l'emozione di Las Vegas, attraversare il deserto, esplorare canyon mozzafiato e immergerti nella bellezza dei parchi. Che fai, vieni?</p>
+    </div>
+  </section>
+
+
+  <!-- Mappa -->
+  <div id="map"></div>
+
+  <!-- Accordion -->
+  <section class="accordion-section">
+    <h2 class="accordion-title">Itinerario Giornaliero</h2>
+    <div id="accordion-container"></div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="quote-box" id="quoteComprende">
+      <h3 class="quote-toggle">La Quota Comprende</h3>
+      <div class="quote-content">
+        <ul>
+          <li>Volo di andata e ritorno</li>
+          <li>Noleggio auto per tutta la durata del viaggio</li>
+          <li>Alloggio (ostelli, motel e hotel selezionati)</li>
+          <li>Carburante per gli spostamenti</li>
+          <li>America the Beautiful Pass (accesso ai parchi nazionali)</li>
+          <li>Tutte le tasse e le imposte relative a voli, noleggio auto e alloggi</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quote-box" id="quoteNonComprende">
+      <h3 class="quote-toggle">La Quota Non Comprende</h3>
+      <div class="quote-content">
+        <ul>
+          <li>Assicurazione sanitaria e viaggio</li>
+          <li>Cibo e bevande</li>
+          <li>Bevande alcoliche</li>
+          <li>Eventuali acquisti personali</li>
+          <li>Attività extra</li>
+          <li>Ciò che non è espressamente scritto in "La quota comprende"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galleria -->
+  <section class="mosaic-gallery">
+    <h2 class="gallery-title">Lasciati ispirare dalle immagini</h2>
+    <div class="mosaic-container">
+      <img src="fotosito1234/11.jpg" alt="Scatto 1">
+      <img src="fotosito1234/13.jpg" alt="Scatto 2">
+      <img src="fotosito1234/14.jpg" alt="Scatto 3">
+      <img src="fotosito1234/12.jpg" alt="Scatto 4">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 USA On The Road. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <!-- Mappa e Accordion Script -->
+  <script>
+    const map = L.map('map', {
+  center: [36.1699, -115.1398],
+  zoom: 5,
+  scrollWheelZoom: false, // Disabilita zoom con la rotella del mouse
+  zoomControl: true        // Mantiene visibili i pulsanti + e -
+});
+
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const tappe = [
+      { name: 'Los Angeles', coords: [34.0522, -118.2437], desc: 'Dove tutto inizia, tra sogni di palme e skyline da film', img: 'foto sito web/lax.jpg' },
+      { name: 'Las Vegas', coords: [36.1699, -115.1398], desc: 'La città del peccato, neon ovunque e casinò.', img: 'foto sito web/lasvegas.jpg' },
+      { name: 'Zion National Park', coords: [37.2982, -113.0263], desc: 'La quiete dei canyon, dove il tempo si ferma.', img: 'foto sito web/Zion National Park.jpg' },
+      { name: 'Bryce Canyon', coords: [37.5930, -112.1871], desc: 'Rocce scolpite dal vento e dal silenzio.', img: 'foto sito web/bryce.jpg' },
+      { name: 'Lake Powell', coords: [36.8765, -111.4944], desc: 'Un lago tra canyon e rocce rosse.', img: 'foto sito web/Lake Powell.jpg' },
+      { name: 'Antelope Canyon', coords: [36.8619, -111.3743], desc: 'Luce e sabbia che danzano insieme.', img: 'foto sito web/Antylope Canyon.jpg' },
+      { name: 'Monument Valley', coords: [36.9980, -110.0986], desc: 'Giganti di roccia nel cuore del deserto.', img: 'foto sito web/Monument Valley.jpg' },
+      { name: 'Grand Canyon', coords: [36.1069, -112.1129], desc: 'Un abisso che toglie il fiato.', img: 'foto sito web/grand.jpg' },
+      { name: 'Death Valley', coords: [36.5054, -117.0794], desc: 'Dune, deserti e colori surreali.', img: 'foto sito web/death.jpg' }
+    ];
+
+    tappe.forEach(tappa => {
+      L.marker(tappa.coords).addTo(map).bindPopup(`
+        <strong>${tappa.name}</strong><br>
+        <img src="${tappa.img}" class="popup-img"><br>
+        <em>${tappa.desc}</em>
+      `);
+    });
+    // Posiziona i controlli di zoom in alto a destra (opzionale se vuoi cambiarne la posizione)
+L.control.zoom({
+  position: 'topright'
+}).addTo(map);
+
+  </script>
+
+  <!-- Accordion Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const accordionContainer = document.getElementById('accordion-container');
+
+      // Titoli e descrizioni per i giorni specifici
+      const itinerario = [
+        { titolo: "California Dreamin' - Il primo abbraccio di Los Angeles", descrizione: "Passeggiata sulla Hollywood Walk of Fame e visita al Hollywood Forever Cemetery. Poi relax a Venice Beach e tramonto dal molo di Santa Monica." },
+        { titolo: "Giro di LA - Tracce di storia e angoli nascosti", descrizione: "Vista panoramica sull'insegna di Hollywood dal Griffith Observatory, poi scopriamo il quartiere bohémien di Los Feliz." },
+        { titolo: "Las Vegas - Deserto e luci", descrizione: "Arrivo a Las Vegas, escursione a Valley of Fire per esplorare le spettacolari formazioni rocciose rosse. La sera, torniamo a Las Vegas per godersi la Strip: fontane, luci e l'atmosfera unica della città." },
+        { titolo: "La Magia di Las Vegas - Fuori dalla Strip", descrizione: "Invece di una notte nei casinò, ci dirigiamo verso Red Rock Canyon per una passeggiata serale, lontano dalla folla. Lasciamo che le luci della città scompaiano mentre ci immergiamo nel deserto, godendoci la calma notturna." },
+        { titolo: "L'incredibile Zion - Dove la Terra incontra il cielo", descrizione: "Arriviamo a Zion National Park e facciamo un'escursione a Angels Landing o lungo il fiume The Narrows, per vivere la grandiosità del paesaggio roccioso." },
+        { titolo: "Bryce Canyon - Un mondo di roccia e colori", descrizione: "Passeggiata tra gli incredibili hoodoos del Bryce Canyon, con una sosta per ammirare l’alba che tinge il paesaggio di colori spettacolari." },
+        { titolo: "Lake Powell e Antelope Canyon - Acqua e rocce dorate", descrizione: "Kayak sul cristallino Lake Powell e visita a Antelope Canyon, per ammirare le spettacolari formazioni rocciose e la luce che filtra tra le fessure." },
+        { titolo: "Magia di Antelope Canyon - Onde di Roccia", descrizione: "Tour a Antelope Canyon, dove potremo scattare foto incredibili tra le onde di sabbia e roccia che si formano nel canyon." },
+        { titolo: "Monument Valley - Nel cuore dell'America", descrizione: "Arriviamo a Monument Valley e facciamo un tour in jeep per scoprire i famosi monoliti che sono simbolo del West americano." },
+        { titolo: "Grand Canyon - Dove il Tempo si Ferma", descrizione: "Esploriamo il Grand Canyon con una passeggiata sul South Rim e un tramonto spettacolare che renderà indimenticabile questa giornata." },
+        { titolo: "Death Valley - Un paesaggio Alieno", descrizione: "Visitiamo Badwater Basin, il punto più basso del Nord America, e Zabriskie Point, per ammirare i paesaggi mozzafiato della Death Valley." },
+        { titolo: "Death Valley - Nel Cuore del Deserto", descrizione: "Esploriamo Artist's Palette e le Mesquite Flat Sand Dunes, dove il deserto si trasforma in un'esperienza visiva unica." },
+        { titolo: "Ritorno a Los Angeles - Un ultimo tuffo nel sole", descrizione: "Ritorniamo a Los Angeles, passando per Santa Monica per un’ultima passeggiata sul lungomare e magari un po’ di shopping." },
+        { titolo: "Los Angeles - La città che non dorme mai", descrizione: "Visita al Getty Center e ai Venice Canals, un angolo tranquillo ma incredibile di Los Angeles." },
+        { titolo: "Addio California - Cuore pieno, bagagli pronti", descrizione: "Ultimi momenti di relax a Venice Beach, con un po’ di surf o una passeggiata prima della partenza." },
+        // Puoi continuare ad aggiungere gli altri giorni allo stesso modo
+      ];
+
+      // Aggiungi i giorni dinamicamente
+      for (let i = 0; i < itinerario.length; i++) {
+        const item = document.createElement('div');
+        item.className = 'accordion-item';
+
+        // Imposta titolo e descrizione
+        const giorno = itinerario[i];
+
+       // aggiunto io 
+        item.innerHTML = `
+          <div class="accordion-header">
+            <div class="giorno-box">
+              <small>Giorno</small>
+              <strong>${i + 1}</strong>
+            </div>
+            <div class="linea-vert"></div>
+            <div class="titolo-giorno">
+  ${(() => {
+    const match = giorno.titolo.match(/^([^–-]+)([–-])(.+)$/);
+    if (match) {
+      return `<strong>${match[1].trim()}</strong> ${match[2]}${match[3]}`;
+    } else {
+      return giorno.titolo;
+    }
+  })()}
+</div>
+
+          </div>
+          <div class="accordion-content">${giorno.descrizione}</div>
+        `;
+
+        
+        accordionContainer.appendChild(item);
+      }
+
+      // Funzionalità di apertura/chiusura dell'accordion
+      document.querySelectorAll('.accordion-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const item = header.parentElement;
+          item.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+
+  <!-- Quote toggle -->
+  <script>
+    const quoteBoxes = document.querySelectorAll('.quote-box');
+  
+    quoteBoxes.forEach(box => {
+      const header = box.querySelector('h3');
+      header.addEventListener('click', () => {
+        // Chiudi tutte le altre
+        quoteBoxes.forEach(b => {
+          if (b !== box) b.classList.remove('active');
+        });
+        // Attiva/disattiva solo quella cliccata
+        box.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

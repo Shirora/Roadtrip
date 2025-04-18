@@ -1,0 +1,382 @@
+/* === Reset base === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.6;
+  background-color: #f9f8f6;
+  color: #333;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* === Main Section === */
+.main-section {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.intro-box {
+  background-color: #fff;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+/* === Info Boxes === */
+.info-box {
+  flex: 1;
+  min-width: 280px;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  border-radius: 8px;
+}
+
+
+
+/* === Mappa === */
+#map {
+  height: 500px;
+  margin: 2rem auto;
+  max-width: 1000px;
+  border: 1px solid #B32502;
+  border-radius: 10px;
+}
+
+/* === Accordion === */
+.accordion-section {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.accordion-title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.accordion-item {
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.giorno-box {
+  text-align: center;
+  margin-right: 1rem;
+}
+
+.giorno-box small {
+  font-size: 0.75rem;
+  color: #999;
+}
+
+.giorno-box strong {
+  font-size: 1.25rem;
+  color: #B32502;
+}
+
+.linea-vert {
+  width: 2px;
+  height: 40px;
+  background: #ccc;
+  margin: 0 1rem;
+}
+
+/* Titolo Giorno (titolo principale) */
+.titolo-giorno strong {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333; /* Colore scuro per maggiore leggibilità */
+  margin-bottom: 10px;
+}
+
+/* Titolo con meno importanza (secondo titolo) */
+.second-title small {
+  font-size: 1.2em; /* Dimensione del font più piccola */
+  color: #777; /* Colore grigio per dare meno importanza */
+  font-weight: normal; /* Pesa meno rispetto al titolo principale */
+  margin-left: 10px; /* Un piccolo margine per distanziare il testo */
+}
+
+.accordion-content {
+  display: none;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.accordion-item.active .accordion-content {
+  display: block;
+}
+
+/* === Quote Section === */
+.quote-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.quote-box {
+  flex: 1;
+  min-width: 300px;
+  background-color: #fefefe;
+  border-left: 6px solid #B32502;
+  padding: 1.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.quote-box h3 {
+  margin-bottom: 1rem;
+}
+
+.quote-box ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  display: none;
+}
+
+.quote-box.active ul {
+  display: block;
+}
+
+/* === Galleria === */
+.mosaic-gallery {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gallery-title {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.mosaic-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.mosaic-container img {
+  border-radius: 10px;
+  object-fit: cover;
+  height: 200px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* === Footer === */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* === Popup Immagini Mappa === */
+.popup-img {
+  width: 100px;
+  height: auto;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+}
+.intro-and-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.intro-box {
+  flex: 1;
+  min-width: 280px;
+}
+
+.info-container {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.quote-toggle {
+  color: #B32502;
+  font-weight: 600;
+  font-size: 1.1rem;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 6px;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.quote-toggle::after {
+  content: "▼";
+  font-size: 0.8rem;
+  position: absolute;
+  right: -20px;
+  top: 2px;
+  transition: transform 0.3s ease;
+}
+
+.quote-box.active .quote-toggle::after {
+  transform: rotate(-180deg);
+}
+
+.quote-toggle:hover {
+  color: #8f1f00;
+  text-decoration: underline;
+}
+
+/* === Hero Header === */
+.hero-header {
+  background: url('fotosito1234/sfondosito.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.4); /* Sfondo con effetto di oscuramento */
+}
+
+/* Contenuto principale della Hero (Pronto per l'avventura) */
+.hero-content {
+  max-width: 600px;
+  text-align: left;
+  color: white;
+}
+
+.hero-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); /* Ombra più morbida */
+}
+
+.hero-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #dcdcdc; /* Colore del testo più chiaro per visibilità */
+  margin-top: 20px;
+}
+
+------------------------------------------
+
+/* Contenitore principale con immagine di sfondo */
+.container {
+  background-image: url('path-to-your-image.jpg'); /* Sostituisci con il percorso della tua immagine */
+  background-size: cover; /* Fa sì che l'immagine copra tutta la superficie */
+  background-position: center; /* Centra l'immagine */
+  height: 100vh; /* Imposta l'altezza della finestra */
+  position: relative; /* Necessario per l'effetto */
+}
+
+/* Box sopra l'immagine */
+.price-box {
+  background: rgba(0, 0, 0, 0.5); /* Sfondo nero trasparente */
+  backdrop-filter: blur(8px); /* Applicazione dell'effetto vetro */
+  -webkit-backdrop-filter: blur(8px); /* Compatibilità per Safari */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: right;
+  max-width: 300px;
+  margin: 2rem auto; /* Puoi regolare il margine per spostare la box più su o giù */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+  top: 2rem; /* Puoi spostare la box più in alto o in basso con questo valore */
+  left: 0%; /* Puoi anche regolare a destra/sinistra se lo vuoi */
+
+}
+
+/* Stili per il titolo, prezzo e informazioni */
+.price-box h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #dddddd58;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.prezzo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.3rem;
+}
+
+.prezzo span {
+  font-size: 0.9rem;
+  color: #B32502;
+}
+
+.incluso {
+  font-size: 0.95rem;
+  color: #ccc;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.sotto-header-box {
+  background-color: #ffffff; /* Colore bianco per il box */
+  padding: 20px; /* Spazio interno per rendere il testo più respirante */
+  border-radius: 8px; /* Angoli arrotondati per un effetto più morbido */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra delicata sotto il box */
+  max-width: 90%; /* Limita la larghezza per evitare che il box diventi troppo largo */
+  margin: 20px auto; /* Centra il box nella pagina */
+  font-family: 'Montserrat', sans-serif; /* Carattere semplice ed elegante */
+  font-size: 1.2em; /* Testo leggermente più grande */
+  text-align: center; /* Testo centrato */
+  color: #333333; /* Colore scuro per il testo per una buona leggibilità */
+  border-left: 6px solid #B32502;
+  border-right: 6px solid #B32502;
+}
+
+
+/* === Media query per schermi più piccoli (Mobile) === */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .price-box-container {
+    margin-top: 20px;
+    justify-content: center;
+  }
+}
